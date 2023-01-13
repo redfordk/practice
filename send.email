@@ -1,0 +1,16 @@
+import smtplib
+from email.message import EmailMessage
+
+email = EmailMessage()
+email['from'] = 'Kent Redford'
+email['to'] = 'sdahlgren94@gmail.com '
+email['subject'] = 'Important Message!'
+
+email.set_content('You are hot!')
+
+with smtplib.SMTP(host='smtp.gmail.com', port=587) as smtp:
+    smtp.ehlo()
+    smtp.starttls()
+    smtp.login('kentmichaelredford@gmail.com', 'suczpsxqkqklfzun')
+    smtp.send_message(email)
+    print('message sent!')
